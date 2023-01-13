@@ -1,15 +1,15 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Appointment, Contact } from "../../../interfaces";
+import { Appointment, Contact } from "../../types";
 import ContactPicker from "../contactPicker/ContactPicker";
 
-interface AppointmentFormProps {
+type AppointmentFormProps = {
   addAppointment: (appointment: Appointment) => void;
   contacts: Contact[];
-}
+};
 
 export type Inputs = {
   title: string;
-  dateTime: Date;
+  dateTime: string;
   contact: string;
 };
 

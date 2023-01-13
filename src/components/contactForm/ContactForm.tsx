@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { Contact } from "../../../interfaces";
+import { Contact } from "../../types";
 
-interface ContactFormProps {
+type ContactFormProps = {
   contacts: Contact[];
   addContact: (contact: Contact) => void;
-}
+};
 
 type Inputs = {
   name: string;

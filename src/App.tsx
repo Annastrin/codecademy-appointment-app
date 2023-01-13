@@ -4,7 +4,7 @@ import AppointmentsPage from "./containers/appointmentsPage/AppointmentsPage";
 import ContactsPage from "./containers/contactsPage/ContactsPage";
 import HomePage from "./containers/homePage/HomePage";
 import { routes } from "./routes";
-import { Contact, Appointment } from "../interfaces";
+import { Contact, Appointment } from "./types";
 
 export default function App() {
   const [contacts, setContacts] = useState<Contact[]>([]);

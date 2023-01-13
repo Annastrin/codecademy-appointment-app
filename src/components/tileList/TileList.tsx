@@ -1,9 +1,9 @@
-import { Contact, Appointment } from "../../../interfaces";
+import { Contact, Appointment } from "../../types";
 import Tile from "../tile/Tile";
 
-interface TileListProps {
+type TileListProps = {
   list: Contact[] | Appointment[];
-}
+};
 
 export default function TileList({ list }: TileListProps) {
   return (

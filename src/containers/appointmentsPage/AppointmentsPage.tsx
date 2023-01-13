@@ -1,12 +1,12 @@
-import { Appointment, Contact } from "../../../interfaces";
+import { Appointment, Contact } from "../../types";
 import AppointmentForm from "../../components/appointmentForm/AppointmentForm";
 import TileList from "../../components/tileList/TileList";
 
-interface AppointmentsPageProps {
+type AppointmentsPageProps = {
   appointments: Appointment[];
   addAppointment: (appointment: Appointment) => void;
   contacts: Contact[];
-}
+};
 
 export default function AppointmentsPage({
   appointments,

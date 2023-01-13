@@ -1,8 +1,8 @@
-import { Contact, Appointment } from "../../../interfaces";
+import { Contact, Appointment } from "../../types";
 
-interface TileProps {
+type TileProps = {
   item: Contact | Appointment;
-}
+};
 
 export default function Tile({ item }: TileProps) {
   return (

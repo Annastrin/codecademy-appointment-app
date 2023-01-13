@@ -1,11 +1,11 @@
 import { UseFormRegister } from "react-hook-form";
-import { Contact } from "../../../interfaces";
+import { Contact } from "../../types";
 import { Inputs } from "../appointmentForm/AppointmentForm";
 
-interface ContactPickerProps {
+type ContactPickerProps = {
   contacts: Contact[];
   register: UseFormRegister<Inputs>;
-}
+};
 
 export default function ContactPicker({
   contacts,

@@ -1,11 +1,11 @@
 import ContactForm from "../../components/contactForm/ContactForm";
 import TileList from "../../components/tileList/TileList";
-import { Contact } from "../../../interfaces";
+import { Contact } from "../../types";
 
-interface ContactsPageProps {
+type ContactsPageProps = {
   contacts: Contact[];
   addContact: (contact: Contact) => void;
-}
+};
 
 export default function ContactsPage({
   contacts,
