@@ -1,23 +1,58 @@
-import { UseFormRegister } from "react-hook-form";
+import {
+  FormControl,
+  FormHelperText,
+  InputLabel,
+  MenuItem,
+  Select,
+} from "@mui/material";
+import { Controller, useFormContext } from "react-hook-form";
 import { Contact } from "../../types";
-import { Inputs } from "../appointmentForm/AppointmentForm";
 
 type ContactPickerProps = {
   contacts: Contact[];
-  register: UseFormRegister<Inputs>;
+  required: boolean;
 };
 
 export default function ContactPicker({
   contacts,
-  register,
+  required,
 }: ContactPickerProps) {
+  const { control } = useFormContext();
+
   return (
-    <select {...register("contact")}>
-      {contacts?.map((contact) => (
-        <option value={contact.name} key={contact.name}>
-          {contact.name}
-        </option>
-      ))}
-    </select>
+    <Controller
+      name="contact"
+      control={control}
+      rules={{ required }}
+      render={({ field, fieldState }) => (
+        <FormControl
+          required={required}
+          fullWidth
+          error={fieldState.error && true}
+        >
+          <InputLabel id="demo-simple-select-label">Contact Name</InputLabel>
+          <Select
+            {...field}
+            labelId="demo-simple-select-label"
+            id={
+              fieldState.error
+                ? "demo-simple-select-error"
+                : "demo-simple-select"
+            }
+            label="Contact Name"
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            {contacts?.map((contact) => (
+              <MenuItem value={contact.name}>{contact.name}</MenuItem>
+            ))}
+          </Select>
+          {fieldState.error && (
+            <FormHelperText>Choose or add a contact</FormHelperText>
+          )}
+        </FormControl>
+      )}
+    />
   );
 }
