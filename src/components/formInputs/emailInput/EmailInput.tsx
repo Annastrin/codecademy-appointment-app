@@ -32,7 +32,6 @@ export default function EmailInput(props: InputProps) {
               ? "outlined-error-helper-text"
               : "outlined-required"
           }
-          size="small"
         />
       )}
     />

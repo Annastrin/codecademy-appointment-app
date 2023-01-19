@@ -57,7 +57,7 @@ export default function ContactForm({
           <EmailInput name="email" required label="Email" />
         </div>
 
-        <Button variant="contained" type="submit">
+        <Button variant="contained" type="submit" size="large">
           Add
         </Button>
         {contactExistsError && (

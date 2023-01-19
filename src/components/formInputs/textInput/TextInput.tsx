@@ -26,7 +26,6 @@ export default function TextInput(props: InputProps) {
               ? "outlined-error-helper-text"
               : "outlined-required"
           }
-          size="small"
         />
       )}
     />
