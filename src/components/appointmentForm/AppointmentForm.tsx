@@ -1,6 +1,9 @@
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Button } from "@mui/material";
+import { FormProvider, useForm } from "react-hook-form";
 import { Appointment, Contact } from "../../types";
 import ContactPicker from "../contactPicker/ContactPicker";
+import AppointmentDateTimePicker from "../formInputs/dateTimePicker/DateTimePicker";
+import TextInput from "../formInputs/textInput/TextInput";
 
 type AppointmentFormProps = {
   addAppointment: (appointment: Appointment) => void;
@@ -9,7 +12,7 @@ type AppointmentFormProps = {
 
 export type Inputs = {
   title: string;
-  dateTime: string;
+  dateTime: Date;
   contact: string;
 };
 
@@ -17,43 +20,41 @@ export default function AppointmentForm({
   addAppointment,
   contacts,
 }: AppointmentFormProps) {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<Inputs>();
+  const methods = useForm<Inputs>({
+    defaultValues: {
+      title: "",
+      dateTime: new Date(),
+      contact: "",
+    },
+  });
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  function onSubmit(data: Inputs) {
     console.log(data);
     const newAppointment = {
       title: data.title,
-      dateTime: data.dateTime,
+      dateTime: data.dateTime.toString(),
       contact: data.contact,
     };
     addAppointment(newAppointment);
-  };
-
-  const getTodayString = () => {
-    const [month, day, year] = new Date()
-      .toLocaleDateString("en-US")
-      .split("/");
-    return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
-  };
+  }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="form-field">
-        <input type="text" {...register("title", { required: true })} />
-        {errors.title && (
-          <span className="error-message">This field is required</span>
-        )}
-      </div>
-      <div className="form-field">
-        <input type="datetime-local" {...register("dateTime")} />
-      </div>
-      <ContactPicker contacts={contacts} register={register} />
-      <input type="submit" value="Add" />
-    </form>
+    <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(onSubmit)} noValidate>
+        <div className="form-field">
+          <TextInput name="title" label="Title" required />
+        </div>
+        <div className="form-field">
+          <AppointmentDateTimePicker name="dateTime" label="Date and Time" />
+        </div>
+        <div className="form-field">
+          <ContactPicker contacts={contacts} required />
+        </div>
+
+        <Button variant="contained" type="submit" size="large">
+          Add
+        </Button>
+      </form>
+    </FormProvider>
   );
 }
