@@ -1,9 +1,10 @@
 import { NavLink, Outlet } from "react-router-dom";
+import Container from "@mui/material/Container";
 import { routes } from "../../routes";
 
 export default function HomePage() {
   return (
-    <>
+    <Container maxWidth="xs">
       <nav>
         <NavLink
           to={routes.contacts}
@@ -21,6 +22,6 @@ export default function HomePage() {
       <main>
         <Outlet />
       </main>
-    </>
+    </Container>
   );
 }
