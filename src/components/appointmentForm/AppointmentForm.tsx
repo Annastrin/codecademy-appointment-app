@@ -42,10 +42,14 @@ export default function AppointmentForm({
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)} noValidate>
         <div className="form-field">
-          <TextInput name="title" label="Title" required />
+          <TextInput name="title" label="Title" required id="appt-title" />
         </div>
         <div className="form-field">
-          <AppointmentDateTimePicker name="dateTime" label="Date and Time" />
+          <AppointmentDateTimePicker
+            name="dateTime"
+            label="Date and Time"
+            id=""
+          />
         </div>
         <div className="form-field">
           <ContactPicker contacts={contacts} required />

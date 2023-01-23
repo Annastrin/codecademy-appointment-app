@@ -6,13 +6,16 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { InputProps } from "../inputPropsType";
 
-export default function AppointmentDateTimePicker(props: InputProps) {
-  const { control, getValues } = useFormContext();
-  const defaultDateTime = getValues("dateTime");
+export default function AppointmentDateTimePicker({
+  name,
+  label,
+  id,
+}: InputProps) {
+  const { control } = useFormContext();
 
   return (
     <Controller
-      name={props.name}
+      name={name}
       control={control}
       rules={{
         validate: (val) => {
@@ -26,17 +29,17 @@ export default function AppointmentDateTimePicker(props: InputProps) {
       render={({ field, fieldState }) => (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DateTimePicker
-            value={defaultDateTime}
-            onChange={field.onChange}
+            label={label}
             renderInput={(inputProps) => (
               <TextField
                 {...inputProps}
-                {...field}
+                id={id || "appt-date-time"}
                 error={!!fieldState.error}
                 helperText={
                   fieldState.error && "Provide correct date and time."
                 }
                 margin="normal"
+                fullWidth
               />
             )}
             label={props.label}

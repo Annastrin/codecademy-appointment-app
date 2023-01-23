@@ -21,7 +21,13 @@ export default function ContactForm({
   contacts,
   addContact,
 }: ContactFormProps) {
-  const methods = useForm<Inputs>();
+  const methods = useForm<Inputs>({
+    defaultValues: {
+      name: "",
+      phone: "",
+      email: "",
+    },
+  });
   const [contactExistsError, setContactExistsError] = useState(false);
 
   function onSubmit(data: Inputs) {
@@ -48,13 +54,13 @@ export default function ContactForm({
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)} noValidate>
         <div className="form-field">
-          <TextInput name="name" required label="Full Name" />
+          <TextInput name="name" required label="Full Name" id="full-name" />
         </div>
         <div className="form-field">
-          <PhoneInput name="phone" required label="Phone Number" />
+          <PhoneInput name="phone" required label="Phone Number" id="" />
         </div>
         <div className="form-field">
-          <EmailInput name="email" required label="Email" />
+          <EmailInput name="email" required label="Email" id="" />
         </div>
 
         <Button variant="contained" type="submit" size="large">

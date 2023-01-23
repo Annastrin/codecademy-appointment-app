@@ -34,18 +34,16 @@ export default function ContactPicker({
           <Select
             {...field}
             labelId="demo-simple-select-label"
-            id={
-              fieldState.error
-                ? "demo-simple-select-error"
-                : "demo-simple-select"
-            }
+            id="appt-contact"
             label="Contact Name"
           >
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
             {contacts?.map((contact) => (
-              <MenuItem value={contact.name}>{contact.name}</MenuItem>
+              <MenuItem key={contact.name} value={contact.name}>
+                {contact.name}
+              </MenuItem>
             ))}
           </Select>
           {fieldState.error && (

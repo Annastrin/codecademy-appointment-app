@@ -2,30 +2,24 @@ import { Controller, useFormContext } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import { InputProps } from "../inputPropsType";
 
-export default function TextInput(props: InputProps) {
+export default function TextInput({ name, label, id, required }: InputProps) {
   const { control } = useFormContext();
   return (
     <Controller
-      name={props.name}
-      defaultValue=""
+      name={name}
       control={control}
-      rules={{ required: props.required }}
+      rules={{ required: required }}
       render={({ fieldState, field }) => (
         <TextField
           {...field}
-          label={props.label}
-          required={props.required}
+          label={label}
+          id={id}
+          required={required}
           error={fieldState.error ? true : false}
           helperText={
-            props.required && fieldState.error
-              ? "This field is required"
-              : undefined
+            required && fieldState.error ? "This field is required" : undefined
           }
-          id={
-            fieldState.error
-              ? "outlined-error-helper-text"
-              : "outlined-required"
-          }
+          fullWidth
         />
       )}
     />
