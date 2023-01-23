@@ -27,6 +27,7 @@ export default function AppointmentForm({
       dateTime: new Date(),
       contact: "",
     },
+    mode: "all",
   });
 
   function onSubmit(data: Inputs) {

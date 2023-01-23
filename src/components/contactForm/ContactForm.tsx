@@ -27,11 +27,11 @@ export default function ContactForm({
       phone: "",
       email: "",
     },
+    mode: "all",
   });
   const [contactExistsError, setContactExistsError] = useState(false);
 
   function onSubmit(data: Inputs) {
-    console.log(data);
     setContactExistsError(false);
     const newContact = {
       name: data.name,
