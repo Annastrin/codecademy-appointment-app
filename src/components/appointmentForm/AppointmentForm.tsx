@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import { FormProvider, useForm } from "react-hook-form";
+import dayjs from "dayjs";
 import { Appointment, Contact } from "../../types";
 import ContactPicker from "../contactPicker/ContactPicker";
 import AppointmentDateTimePicker from "../formInputs/dateTimePicker/DateTimePicker";
@@ -29,13 +30,13 @@ export default function AppointmentForm({
   });
 
   function onSubmit(data: Inputs) {
-    console.log(data);
     const newAppointment = {
       title: data.title,
-      dateTime: data.dateTime.toString(),
+      dateTime: dayjs(data.dateTime).toDate().toString(),
       contact: data.contact,
     };
     addAppointment(newAppointment);
+    methods.reset();
   }
 
   return (

@@ -19,31 +19,29 @@ export default function AppointmentDateTimePicker({
       control={control}
       rules={{
         validate: (val) => {
-          console.log(val);
-          console.log(
-            dayjs(val).isValid() ? dayjs(val).isAfter(new Date()) : false
-          );
-          return dayjs(val).isValid() ? dayjs(val).isAfter(new Date()) : false;
+          if (!dayjs(val).isValid()) {
+            return "Invalid date";
+          }
+          return dayjs(val).isAfter(new Date()) || "Enter a future date";
         },
       }}
       render={({ field, fieldState }) => (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DateTimePicker
+            {...field}
             label={label}
+            disablePast
+            minDateTime={dayjs(new Date())}
             renderInput={(inputProps) => (
               <TextField
                 {...inputProps}
                 id={id || "appt-date-time"}
                 error={!!fieldState.error}
-                helperText={
-                  fieldState.error && "Provide correct date and time."
-                }
+                helperText={fieldState.error?.message}
                 margin="normal"
                 fullWidth
               />
             )}
-            label={props.label}
-            disablePast
           />
         </LocalizationProvider>
       )}
