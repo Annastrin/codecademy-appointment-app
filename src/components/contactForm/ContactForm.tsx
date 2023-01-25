@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { Alert, Button } from "@mui/material";
+import { Stack, Alert, Button } from "@mui/material";
 import TextInput from "../formInputs/textInput/TextInput";
 import PhoneInput from "../formInputs/phoneInput/PhoneInput";
 import EmailInput from "../formInputs/emailInput/EmailInput";
@@ -53,28 +53,30 @@ export default function ContactForm({
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)} noValidate>
-        <div className="form-field">
-          <TextInput name="name" required label="Full Name" id="full-name" />
-        </div>
-        <div className="form-field">
-          <PhoneInput name="phone" required label="Phone Number" id="" />
-        </div>
-        <div className="form-field">
-          <EmailInput name="email" required label="Email" id="" />
-        </div>
+        <Stack>
+          <div className="form-field">
+            <TextInput name="name" required label="Full Name" id="full-name" />
+          </div>
+          <div className="form-field">
+            <PhoneInput name="phone" required label="Phone Number" id="" />
+          </div>
+          <div className="form-field">
+            <EmailInput name="email" required label="Email" id="" />
+          </div>
 
-        <Button variant="contained" type="submit" size="large">
-          Add
-        </Button>
-        {contactExistsError && (
-          <Alert
-            severity="error"
-            onClose={closeContactExistsError}
-            sx={{ marginTop: 1 }}
-          >
-            This contact already exists!
-          </Alert>
-        )}
+          <Button variant="contained" type="submit" size="large">
+            Add
+          </Button>
+          {contactExistsError && (
+            <Alert
+              severity="error"
+              onClose={closeContactExistsError}
+              sx={{ marginTop: 1 }}
+            >
+              This contact already exists!
+            </Alert>
+          )}
+        </Stack>
       </form>
     </FormProvider>
   );

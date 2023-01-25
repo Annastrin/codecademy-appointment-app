@@ -1,3 +1,4 @@
+import Typography from "@mui/material/Typography";
 import { Appointment, Contact } from "../../types";
 import AppointmentForm from "../../components/appointmentForm/AppointmentForm";
 import TileList from "../../components/tileList/TileList";
@@ -14,16 +15,20 @@ export default function AppointmentsPage({
   contacts,
 }: AppointmentsPageProps) {
   return (
-    <div>
+    <>
       <section>
-        <h2>Add Appointment</h2>
+        <Typography variant="h2" marginBottom={2} align="center">
+          Add Appointment
+        </Typography>
         <AppointmentForm addAppointment={addAppointment} contacts={contacts} />
       </section>
       <hr />
       <section>
-        <h2>Appointments</h2>
+        <Typography variant="h2" marginBottom={2} align="center">
+          Appointments
+        </Typography>
         {appointments.length > 0 && <TileList list={appointments} />}
       </section>
-    </div>
+    </>
   );
 }

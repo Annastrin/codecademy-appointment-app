@@ -38,7 +38,6 @@ export default function AppointmentDateTimePicker({
                 id={id || "appt-date-time"}
                 error={!!fieldState.error}
                 helperText={fieldState.error?.message}
-                margin="normal"
                 fullWidth
               />
             )}

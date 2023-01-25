@@ -1,36 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
 #root {
+  height: 100vh;
   padding: 30px;
+  background-color: #eee;
   font-family: "Open Sans", sans-serif;
 }
-
-nav>a {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  color: #000000;
-  margin-right: 30.5px;
-  text-decoration-line: none;
-}
-
-nav>a.active {
-  text-decoration-line: underline;
-}
-
-nav {
-  padding-bottom: 20px;
-  border-bottom: 1px solid #979797;
-  margin-bottom: 20px;
-}
-
-h2 {
-  font-weight: bold;
-  font-size: 18px;
-  color: #000000;
-  margin: 0;
-  margin-bottom: 18px;
-}
-
-section {}
 
 hr {
   border: none;
@@ -38,46 +19,8 @@ hr {
   margin: 20px 0;
 }
 
-input[type="submit"] {
-  background: #03a8d8;
-  border-radius: 4px;
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 14px;
-  border: none;
-  outline: none;
-  padding: 10px 0;
-  width: 100%;
-  font-family: "Open Sans", sans-serif;
-  margin-top: 10px;
-  margin-bottom: 0px;
-}
-
-input,
-select {
-  font-family: "Open Sans", sans-serif;
-  background: #ffffff;
-  border: 1px solid #979797;
-  border-radius: 4px;
-  padding: 7px 9.5px 9px 9.5px;
-  outline: none;
-  width: 100%;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-}
-
 .form-field {
-  margin-bottom: 10px;
-}
-
-.form-field input {
-  margin-bottom: 0;
-}
-
-.error-message {
-  margin-left: 11px;
-  font-size: 10px;
-  color: #ad3e3e;
+  margin-bottom: 15px;
 }
 
 .tile {
