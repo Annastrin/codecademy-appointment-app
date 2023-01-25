@@ -22,6 +22,12 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />}>
           <Route
+            index
+            element={
+              <ContactsPage contacts={contacts} addContact={addContact} />
+            }
+          />
+          <Route
             path={routes.contacts}
             element={
               <ContactsPage contacts={contacts} addContact={addContact} />
