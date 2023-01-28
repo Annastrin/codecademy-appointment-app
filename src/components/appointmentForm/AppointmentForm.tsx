@@ -31,9 +31,19 @@ export default function AppointmentForm({
   });
 
   function onSubmit(data: Inputs) {
+    let formattedDateTime = dayjs(data.dateTime)
+      .toDate()
+      .toLocaleString("default", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        timeZoneName: "short",
+      });
     const newAppointment = {
       title: data.title,
-      dateTime: dayjs(data.dateTime).toDate().toString(),
+      dateTime: formattedDateTime,
       contact: data.contact,
     };
     addAppointment(newAppointment);
