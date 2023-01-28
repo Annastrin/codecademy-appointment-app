@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { Stack, Alert, Button } from "@mui/material";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import Alert from "@mui/material/Alert";
 import TextInput from "../formInputs/textInput/TextInput";
 import PhoneInput from "../formInputs/phoneInput/PhoneInput";
 import EmailInput from "../formInputs/emailInput/EmailInput";
@@ -54,15 +57,15 @@ export default function ContactForm({
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)} noValidate>
         <Stack>
-          <div className="form-field">
+          <Box mb={2}>
             <TextInput name="name" required label="Full Name" id="full-name" />
-          </div>
-          <div className="form-field">
+          </Box>
+          <Box mb={2}>
             <PhoneInput name="phone" required label="Phone Number" id="" />
-          </div>
-          <div className="form-field">
+          </Box>
+          <Box mb={2}>
             <EmailInput name="email" required label="Email" id="" />
-          </div>
+          </Box>
 
           <Button variant="contained" type="submit" size="large">
             Add

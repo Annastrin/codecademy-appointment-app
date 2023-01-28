@@ -7,32 +7,8 @@ body {
 }
 
 #root {
-  height: 100vh;
+  min-height: 100vh;
   padding: 30px;
   background-color: #eee;
   font-family: "Open Sans", sans-serif;
-}
-
-hr {
-  border: none;
-  border-top: 1px solid #979797;
-  margin: 20px 0;
-}
-
-.form-field {
-  margin-bottom: 15px;
-}
-
-.tile {
-  margin: 0;
-  font-size: 14px;
-  margin-bottom: 4px;
-}
-
-.tile.tile-title {
-  font-weight: bold;
-}
-
-.tile-container {
-  margin-bottom: 20px;
 }

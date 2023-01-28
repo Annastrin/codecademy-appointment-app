@@ -1,5 +1,7 @@
-import { Stack, Button } from "@mui/material";
 import { FormProvider, useForm } from "react-hook-form";
+import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import dayjs from "dayjs";
 import { Appointment, Contact } from "../../types";
 import ContactPicker from "../contactPicker/ContactPicker";
@@ -54,20 +56,19 @@ export default function AppointmentForm({
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)} noValidate>
         <Stack>
-          <div className="form-field">
+          <Box mb={2}>
             <TextInput name="title" label="Title" required id="appt-title" />
-          </div>
-          <div className="form-field">
+          </Box>
+          <Box mb={2}>
             <AppointmentDateTimePicker
               name="dateTime"
               label="Date and Time"
               id=""
             />
-          </div>
-          <div className="form-field">
+          </Box>
+          <Box mb={2}>
             <ContactPicker contacts={contacts} required />
-          </div>
-
+          </Box>
           <Button variant="contained" type="submit" size="large">
             Add
           </Button>

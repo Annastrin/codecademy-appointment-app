@@ -1,3 +1,4 @@
+import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import ContactForm from "../../components/contactForm/ContactForm";
 import TileList from "../../components/tileList/TileList";
@@ -14,19 +15,18 @@ export default function ContactsPage({
 }: ContactsPageProps) {
   return (
     <>
-      <section>
+      <Box component="section" mb={3}>
         <Typography variant="h2" marginBottom={2} align="center">
           Add Contact
         </Typography>
         <ContactForm contacts={contacts} addContact={addContact} />
-      </section>
-      <hr />
-      <section>
-        <Typography variant="h2" marginBottom={2} align="center">
+      </Box>
+      <Box component="section">
+        <Typography variant="h2" align="center">
           Contacts
         </Typography>
         {contacts.length > 0 && <TileList list={contacts} />}
-      </section>
+      </Box>
     </>
   );
 }
