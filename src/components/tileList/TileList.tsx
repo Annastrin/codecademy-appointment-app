@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import { Contact, Appointment } from "../../types";
@@ -11,10 +12,10 @@ export default function TileList({ list }: TileListProps) {
   return (
     <List disablePadding>
       {list.map((item, index) => (
-        <>
-          <Tile item={item} key={index} />
+        <Fragment key={item.id}>
+          <Tile item={item} />
           {index < list.length - 1 && <Divider />}
-        </>
+        </Fragment>
       ))}
     </List>
   );

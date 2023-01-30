@@ -1,17 +1,15 @@
+import { useSelector, useDispatch } from "react-redux";
 import { FormProvider, useForm } from "react-hook-form";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import dayjs from "dayjs";
-import { Appointment, Contact } from "../../types";
+import { v4 as uuidv4 } from "uuid";
 import ContactPicker from "../contactPicker/ContactPicker";
 import AppointmentDateTimePicker from "../formInputs/dateTimePicker/DateTimePicker";
 import TextInput from "../formInputs/textInput/TextInput";
-
-type AppointmentFormProps = {
-  addAppointment: (appointment: Appointment) => void;
-  contacts: Contact[];
-};
+import { addAppointment } from "../../slices/appointmentsSlice";
+import type { RootState } from "../../store";
 
 export type Inputs = {
   title: string;
@@ -19,10 +17,7 @@ export type Inputs = {
   contact: string;
 };
 
-export default function AppointmentForm({
-  addAppointment,
-  contacts,
-}: AppointmentFormProps) {
+export default function AppointmentForm() {
   const methods = useForm<Inputs>({
     defaultValues: {
       title: "",
@@ -32,8 +27,12 @@ export default function AppointmentForm({
     mode: "all",
   });
 
+  const contacts = useSelector((state: RootState) => state.contacts);
+  const dispatch = useDispatch();
+
   function onSubmit(data: Inputs) {
-    let formattedDateTime = dayjs(data.dateTime)
+    const appointmentId = uuidv4();
+    const formattedDateTime = dayjs(data.dateTime)
       .toDate()
       .toLocaleString("default", {
         year: "numeric",
@@ -44,11 +43,12 @@ export default function AppointmentForm({
         timeZoneName: "short",
       });
     const newAppointment = {
+      id: appointmentId,
       title: data.title,
       dateTime: formattedDateTime,
       contact: data.contact,
     };
-    addAppointment(newAppointment);
+    dispatch(addAppointment(newAppointment));
     methods.reset();
   }
 

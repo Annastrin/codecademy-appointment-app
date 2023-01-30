@@ -1,25 +1,19 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { useSelector } from "react-redux";
 import ContactForm from "../../components/contactForm/ContactForm";
 import TileList from "../../components/tileList/TileList";
-import { Contact } from "../../types";
+import type { RootState } from "../../store";
 
-type ContactsPageProps = {
-  contacts: Contact[];
-  addContact: (contact: Contact) => void;
-};
-
-export default function ContactsPage({
-  contacts,
-  addContact,
-}: ContactsPageProps) {
+export default function ContactsPage() {
+  const contacts = useSelector((state: RootState) => state.contacts);
   return (
     <>
       <Box component="section" mb={3}>
         <Typography variant="h2" marginBottom={2} align="center">
           Add Contact
         </Typography>
-        <ContactForm contacts={contacts} addContact={addContact} />
+        <ContactForm />
       </Box>
       <Box component="section">
         <Typography variant="h2" align="center">
