@@ -1,6 +1,7 @@
 {
   "name": "codecademy-appointment-planner",
   "version": "0.1.0",
+  "homepage": "https://annastrin.github.io/codecademy-appointment-app",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -32,7 +33,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -61,6 +64,7 @@
   },
   "devDependencies": {
     "@types/uuid": "^9.0.0",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "gh-pages": "^5.0.0"
   }
 }
