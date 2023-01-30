@@ -1,12 +1,14 @@
 # Codecademy Appointment App
 
-This is a Codecademy project that consists of two pages: one to view and add contacts and one to view and add appointments.
+This is a Codecademy project that consists of two pages: one to view, add, and delete contacts and one to view, add, and delete appointments. Both contacts and appointments are stored in the local storage.
 The project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Technologies
 
 - React (Create React App)
 - React Router
+- Redux
+- Redux Persist
 - React Hook Form
 - Material UI
 
