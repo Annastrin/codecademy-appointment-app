@@ -1,7 +1,7 @@
 {
   "name": "codecademy-appointment-planner",
   "version": "0.1.0",
-  "homepage": "https://annastrin.github.io/codecademy-appointment-app",
+  "homepage": "https://annastrin.github.io/codecademy-appointment-app/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -30,7 +30,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PUBLIC_URL=/ react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

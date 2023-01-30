@@ -6,7 +6,7 @@ import { routes } from "./routes";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/" element={<HomePage />}>
           <Route index element={<ContactsPage />} />
